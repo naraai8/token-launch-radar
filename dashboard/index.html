@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Token Launch Radar — pre-token protocols by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>Token Launch Radar</h1>
+    <p class="sub" id="asof"></p>
+  </div>
+  <p class="tag">Pre-token protocols ranked by implied launch value — the watchlist is a floor, not a ceiling.</p>
+</header>
+
+<section id="controls">
+  <input id="q" type="search" placeholder="Search name or slug…">
+  <select id="fcat"><option value="">All categories</option></select>
+  <select id="fmin">
+    <option value="0">Any TVL</option>
+    <option value="50000000">TVL ≥ $50M</option>
+    <option value="250000000">TVL ≥ $250M</option>
+    <option value="1000000000">TVL ≥ $1B</option>
+  </select>
+  <label><input id="fw" type="checkbox"> house watchlist only</label>
+  <span id="count"></span>
+</section>
+
+<table id="board">
+  <thead><tr>
+    <th data-k="r">#</th><th data-k="n">Protocol</th><th data-k="v">Implied value</th>
+    <th data-k="t">TVL</th><th data-k="c">Category</th><th data-k="g">7d Δ</th>
+    <th data-k="ch">Chains</th><th data-k="l">Listed</th><th></th>
+  </tr></thead>
+  <tbody></tbody>
+</table>
+
+<aside id="detail" hidden>
+  <button id="close" aria-label="close">×</button>
+  <h2 id="dn"></h2>
+  <p id="dmeta" class="sub"></p>
+  <div id="dstats"></div>
+  <h3>Why it ranks here</h3><p id="dwhy"></p>
+  <h3>How to farm it</h3><ol id="dsteps"></ol>
+</aside>
+
+<footer>
+  <p>Data: sealed DefiLlama snapshot read by <code>main.ts</code> at build time. Implied value = TVL-scaled launch estimate × category × momentum × reach × recency. A claim by this entry, not by make.fun.</p>
+</footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
