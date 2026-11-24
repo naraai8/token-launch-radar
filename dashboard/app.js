@@ -6,6 +6,12 @@ let sortK='r',sortDir=1;
 
 $('#asof').textContent=`DefiLlama snapshot as of ${DATA.asof} · floor ${usd(DATA.floor)} · ${rows.length} pre-token protocols`;
 
+const totT=rows.reduce((s,r)=>s+r.t,0),totV=rows.reduce((s,r)=>s+r.v,0),wlN=rows.filter(r=>r.w).length;
+$('#hero').innerHTML=[
+ ['pre-token protocols',rows.length],['combined TVL',usd(totT)],
+ ['combined implied value',usd(totV)],['house watchlist rows',wlN],
+].map(([k,v])=>`<div><b>${v}</b><span>${k}</span></div>`).join('');
+
 const cats=[...new Set(rows.map(r=>r.c).filter(Boolean))].sort();
 for(const c of cats){const o=document.createElement('option');o.value=o.textContent=c;$('#fcat').append(o);}
 
